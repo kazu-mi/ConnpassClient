@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="eventRowViewModel"
+            type="app.kazucon.connpassclient.viewmodel.EventRowViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <RelativeLayout
+                android:id="@+id/dateStarted"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/imageViewOwner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
+
+                <TextView
+                    android:id="@+id/textViewYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{eventRowViewModel.startedYear}"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/textViewYear"
+                    android:gravity="center"
+                    android:text="@{eventRowViewModel.startedDate}"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/textViewDate"
+                    android:gravity="center"
+                    android:text="@{eventRowViewModel.startedTime}"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_person" />
+
+            <TextView
+                android:id="@+id/textGroupName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/dateStarted"
+                android:background="@android:color/black"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:padding="6dp"
+                android:visibility="@{TextUtils.isEmpty(eventRowViewModel.groupName) ? View.INVISIBLE : View.VISIBLE}"
+                android:text="@{eventRowViewModel.groupName}"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textGroupName"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/dateStarted"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{eventRowViewModel.eventTitle}"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textCatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textTitle"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{eventRowViewModel.eventCatch}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp" />
+
+            <ImageView
+                android:id="@+id/imageViewOwner"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                app:srcCompat="@drawable/ic_person" />
+
+            <TextView
+                android:id="@+id/textOwnerName"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignTop="@+id/imageViewOwner"
+                android:layout_toEndOf="@+id/imageViewOwner"
+                android:layout_toRightOf="@+id/imageViewOwner"
+                android:background="@android:color/darker_gray"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@{eventRowViewModel.ownerName}"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/textOwnerName"
+                android:layout_toRightOf="@+id/textOwnerName"
+                app:srcCompat="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignTop="@+id/imageView3"
+                android:layout_toRightOf="@+id/imageView3"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:maxWidth="140dp"
+                android:text="@{eventRowViewModel.address}" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView5"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView5"
+                android:gravity="center"
+                android:text="@{eventRowViewModel.joinCount + '人'}" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ConnpassClient</string>
+
+    <string name="events_new">新着イベント</string>
+    <string name="events_soon">今月開催イベント(遅い順)</string>
+    <string name="events_favorite">お気に入り</string>
+    <string name="events_join">参加予定イベント</string>
+
+    <string name="not_id">ニックネームを設定することで\n参加予定イベントを取得できます。</string>
+    <string name="nickname">ニックネーム</string>
+    <string name="set_id">設定</string>
+</resources>
