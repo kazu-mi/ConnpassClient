@@ -17,6 +17,6 @@ test:
     - echo "Nothing to do here"
 deployment:
   master:
-    branch: master
+    branch: pre-release
     commands:
       - ./deploy.sh
