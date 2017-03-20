@@ -3,7 +3,7 @@ general:
     only:
       - pre-release
   artifacts:
-    - app/build/outputs/apk/test.apk
+    - app/build/outputs/apk/app-debug.apk
 machine:
   java:
     version: openjdk7
@@ -19,5 +19,4 @@ deployment:
   master:
     branch: pre-release
     commands:
-      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
       - ./deploy.sh
