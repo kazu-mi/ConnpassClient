@@ -14,7 +14,7 @@ dependencies:
     - echo y | android update sdk --no-ui --filter "android-25,build-tools-25.0.2"
 test:
   override:
-    - echo "Nothing to do here"
+    - echo "Nothing to do here."
 deployment:
   master:
     branch: pre-release
