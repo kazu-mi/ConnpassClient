@@ -1,0 +1,27 @@
+general:
+  branches:
+    only:
+      - pre-release
+  artifacts:
+    - app/build/outputs/apk/app-debug.apk
+machine:
+  java:
+    version: openjdk8
+  environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
+dependencies:
+  pre:
+    - mkdir $ANDROID_HOME/licenses
+    - echo "8933bad161af4178b1185d1a37fbf41ea5269c55" >> $ANDROID_HOME/licenses/android-sdk-license
+  override:
+    - echo y | android update sdk --no-ui --filter "android-25,build-tools-25.0.2"
+test:
+  override:
+    - echo "Nothing to do here."
+deployment:
+  master:
+    branch: pre-release
+    commands:
+      - ./gradlew assembleDebug
+      - curl -F "token=${DEPLOY_GATE_API_KEY}" -F "file=@app/build/outputs/apk/app-debug.apk" -F "message=deployed" https://deploygate.com/api/users/kazuyuka76/apps
+      - cp -r app/build/outputs/apk/app-debug.apk $CIRCLE_ARTIFACTS
