@@ -1,4 +1,7 @@
 general:
+  branches:
+    only:
+      - master
   artifacts:
     - "app/build/outputs/apk/app-release-unsigned.apk"
 machine:
@@ -16,9 +19,4 @@ deployment:
   master:
     branch: master
     commands:
-      - ./gradlew assembleRelease
-      - curl \
-        -F "token=3260cbf8b275099a2596e23f6618ca159951cf11" \
-        -F "file=app/build/outputs/apk/app-release-unsigned.apk" \
-        -F "message=deployed" \
-        https://deploygate.com/api/users/kazuyuka76/apps
+      - ./deploy.sh
