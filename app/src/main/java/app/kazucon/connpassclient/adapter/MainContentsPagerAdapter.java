@@ -20,20 +20,20 @@ public class MainContentsPagerAdapter extends FragmentPagerAdapter {
     private Fragment[] fragments = {
             new NewEventsFragment(),
             new SoonEventsFragment(),
-            new FavoriteEventsFragment(),
             new JoinEventsFragment(),
+            new FavoriteEventsFragment(),
     };
     public int[] iconId = {
             R.drawable.ic_new,
             R.drawable.ic_soon,
-            R.drawable.ic_favorite,
             R.drawable.ic_mine,
+            R.drawable.ic_favorite,
     };
     public int[] titleId = {
             R.string.events_new,
             R.string.events_soon,
-            R.string.events_favorite,
             R.string.events_join,
+            R.string.events_favorite,
     };
 
     public MainContentsPagerAdapter(FragmentManager fm) {
