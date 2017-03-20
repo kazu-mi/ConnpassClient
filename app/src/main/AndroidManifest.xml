@@ -21,13 +21,7 @@
         </activity>
         <activity
             android:name=".activity.EventActivity"
-            android:parentActivityName=".activity.MainActivity" />
-        <activity
-            android:name=".activity.SearchFilterActivity"
-            android:parentActivityName=".activity.MainActivity"/>
-        <activity
-            android:name=".activity.SearchResultActivity"
-            android:parentActivityName=".activity.SearchFilterActivity"/>
+            android:parentActivityName=".activity.MainActivity"></activity>
     </application>
 
 </manifest>
