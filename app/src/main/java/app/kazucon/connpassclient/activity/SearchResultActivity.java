@@ -43,7 +43,7 @@ public class SearchResultActivity extends AppCompatActivity {
         this.searchResultBind.recyclerView.setLayoutManager(layoutManager);
         this.searchResultBind.recyclerView.setAdapter(this.eventListAdapter);
 
-        this.searchResultBind.refresh.setEnabled(true);
+        this.searchResultBind.refresh.setEnabled(false);
 
         final String keyword = getIntent().getStringExtra("keyword");
         requestEventData(keyword, 0);
