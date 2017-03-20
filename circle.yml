@@ -6,7 +6,7 @@ general:
     - app/build/outputs/apk/app-debug.apk
 machine:
   java:
-    version: openjdk7
+    version: openjdk8
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
 dependencies:
