@@ -53,14 +53,6 @@ public class Request {
     }
 
     /**
-     * イベント検索
-     */
-    public void searchEvent(String keyword, int page, final ResponseCallback callback) {
-        Call<EventResponse> call = httpClient.getMethod.searchEventsWithKeyword(keyword, page * MAX_RESPONSE_EVENT_COUNT);
-        runRequest(call, callback);
-    }
-
-    /**
      * リクエスト実行共通処理
      * @param call Retrofit Call
      * @param callback レスポンス取得コールバック

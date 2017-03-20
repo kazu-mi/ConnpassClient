@@ -21,7 +21,4 @@ public interface GetMethod {
     @GET("?order=3")
     Call<EventResponse> getJoinEvents(@Query("nickname") String nickname, @Query("start") int startIndex);
 
-    @GET("?order=3")
-    Call<EventResponse> searchEventsWithKeyword(@Query("keyword") String keyword, @Query("start") int startIndex);
-
 }

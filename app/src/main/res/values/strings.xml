@@ -9,9 +9,4 @@
     <string name="not_id">ニックネームを設定することで\n参加予定イベントを取得できます。</string>
     <string name="nickname">ニックネーム</string>
     <string name="set_id">設定</string>
-
-    <string name="keyword">キーワード</string>
-    <string name="search">検索</string>
-    <string name="search_result">検索結果</string>
-
 </resources>
