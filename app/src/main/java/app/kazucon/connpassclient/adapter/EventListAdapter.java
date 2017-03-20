@@ -15,6 +15,7 @@ import java.util.List;
 
 import app.kazucon.connpassclient.R;
 import app.kazucon.connpassclient.activity.EventActivity;
+import app.kazucon.connpassclient.database.container.FavoriteDB;
 import app.kazucon.connpassclient.databinding.RowEventBinding;
 import app.kazucon.connpassclient.model.EventResponse;
 import app.kazucon.connpassclient.viewmodel.EventRowViewModel;
@@ -27,9 +28,11 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Self
 
     private Activity activity;
     private ArrayList<EventResponse.Event> events = new ArrayList<>();
+    private FavoriteDB favoriteDB;
 
     public EventListAdapter(Activity activity) {
-        this.activity = activity;
+        this.activity   = activity;
+        this.favoriteDB = new FavoriteDB(activity);
     }
 
     public void addEvents(List<EventResponse.Event> newEvents) {
@@ -59,14 +62,29 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Self
     }
 
     @Override
-    public void onBindViewHolder(SelfViewHolder holder, final int position) {
+    public void onBindViewHolder(final SelfViewHolder holder, final int position) {
+        holder.rowEventBind.setVariable(BR.eventRowViewModel, new EventRowViewModel(events.get(position)));
+
         holder.rowEventBind.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventActivity.start(activity, events.get(position));
             }
         });
-        holder.rowEventBind.setVariable(BR.eventRowViewModel, new EventRowViewModel(events.get(position)));
+        holder.rowEventBind.getEventRowViewModel().setFavorite(favoriteDB.exists(events.get(position).event_id));
+        holder.rowEventBind.imageViewFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean newFavoriteState = !holder.rowEventBind.getEventRowViewModel().isFavorite();
+                if (newFavoriteState) {
+                    favoriteDB.insert(events.get(position).event_id);
+                } else {
+                    favoriteDB.delete(events.get(position).event_id);
+                }
+                holder.rowEventBind.getEventRowViewModel().setFavorite(newFavoriteState);
+            }
+        });
+
         holder.rowEventBind.executePendingBindings();
     }
 

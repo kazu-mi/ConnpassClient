@@ -34,6 +34,8 @@ public class EventRowViewModel extends BaseObservable {
 
     private String started_at;
 
+    private boolean isFavorite;
+
     private final SimpleDateFormat dateFormat
             = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
     private final String[] DAY_OF_WEEKS = {
@@ -153,6 +155,11 @@ public class EventRowViewModel extends BaseObservable {
         return accepted + "/" + limit;
     }
 
+    @Bindable
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
     public void setGroupName(String groupName) {
         this.groupName = groupName;
         notifyPropertyChanged(BR.groupName);
@@ -186,5 +193,10 @@ public class EventRowViewModel extends BaseObservable {
     public void setLimit(int limit) {
         this.limit = limit;
         notifyPropertyChanged(BR.limit);
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+        notifyPropertyChanged(BR.favorite);
     }
 }
