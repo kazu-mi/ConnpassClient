@@ -1,0 +1,22 @@
+general:
+  branches:
+    only:
+      - pre-release
+  artifacts:
+    - "app/build/outputs/apk/app-release-unsigned.apk"
+machine:
+  java:
+    version: openjdk7
+  environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
+dependencies:
+  override:
+    - echo y | android update sdk --no-ui --filter "android-25,build-tools-25.0.2"
+test:
+  override:
+    - echo "Nothing to do here"
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./deploy.sh

@@ -3,8 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View"/>
-        <import type="android.text.TextUtils"/>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
         <variable
             name="eventRowViewModel"
             type="app.kazucon.connpassclient.viewmodel.EventRowViewModel" />
@@ -17,7 +20,8 @@
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="4dp">
+        android:layout_marginTop="4dp"
+        android:clickable="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,11 +31,13 @@
             <RelativeLayout
                 android:id="@+id/dateStarted"
                 android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/imageViewOwner"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true">
+                android:layout_alignParentTop="true"
+                android:background="#ffa034"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp">
 
                 <TextView
                     android:id="@+id/textViewYear"
@@ -78,21 +84,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
+                android:layout_marginLeft="4dp"
                 android:layout_toRightOf="@id/dateStarted"
                 android:background="@android:color/black"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:maxWidth="220dp"
                 android:padding="6dp"
-                android:visibility="@{TextUtils.isEmpty(eventRowViewModel.groupName) ? View.INVISIBLE : View.VISIBLE}"
                 android:text="@{eventRowViewModel.groupName}"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="@{TextUtils.isEmpty(eventRowViewModel.groupName) ? View.INVISIBLE : View.VISIBLE}" />
 
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textGroupName"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_toRightOf="@id/dateStarted"
                 android:ellipsize="end"
@@ -170,6 +179,17 @@
                 android:layout_alignTop="@+id/textView5"
                 android:gravity="center"
                 android:text="@{eventRowViewModel.joinCount + '人'}" />
+
+            <ImageView
+                android:id="@+id/imageViewFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textGroupName"
+                android:layout_alignEnd="@+id/textView6"
+                android:layout_alignRight="@+id/textView6"
+                android:clickable="true"
+                android:src="@{eventRowViewModel.favorite ? @drawable/ic_favorite_on : @drawable/ic_favorite}"
+                android:visibility="@{eventRowViewModel.favoriteEnabled ? View.VISIBLE : View.GONE}" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

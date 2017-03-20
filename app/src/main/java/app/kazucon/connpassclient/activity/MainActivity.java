@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import app.kazucon.connpassclient.R;
 import app.kazucon.connpassclient.adapter.MainContentsPagerAdapter;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             this.mainBind.tab.getTabAt(i).setIcon(mainContentsPagerAdapter.iconId[i]);
         }
 
+        this.mainBind.pager.setOffscreenPageLimit(mainContentsPagerAdapter.iconId.length);
         this.mainBind.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -44,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
+            }
+        });
+
+        this.mainBind.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchFilterActivity.start(MainActivity.this);
             }
         });
 
