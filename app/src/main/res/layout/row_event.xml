@@ -20,7 +20,8 @@
         android:layout_marginBottom="4dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="4dp">
+        android:layout_marginTop="4dp"
+        android:clickable="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -186,7 +187,9 @@
                 android:layout_alignBottom="@+id/textGroupName"
                 android:layout_alignEnd="@+id/textView6"
                 android:layout_alignRight="@+id/textView6"
-                android:src="@{eventRowViewModel.favorite ? @drawable/ic_favorite_on : @drawable/ic_favorite}" />
+                android:clickable="true"
+                android:src="@{eventRowViewModel.favorite ? @drawable/ic_favorite_on : @drawable/ic_favorite}"
+                android:visibility="@{eventRowViewModel.favoriteEnabled ? View.VISIBLE : View.GONE}" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
