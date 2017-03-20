@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             this.mainBind.tab.getTabAt(i).setIcon(mainContentsPagerAdapter.iconId[i]);
         }
 
+        this.mainBind.pager.setOffscreenPageLimit(mainContentsPagerAdapter.iconId.length);
         this.mainBind.pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
